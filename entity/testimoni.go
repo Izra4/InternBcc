@@ -2,6 +2,8 @@ package entity
 
 import "gorm.io/gorm"
 
-type Testi struct {
+type Testimoni struct {
 	gorm.Model
+	UserID   uint
+	GedungID uint
 }
