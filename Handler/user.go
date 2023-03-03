@@ -96,6 +96,11 @@ func LogIn(c *gin.Context) {
 	sdk.Success(c, http.StatusOK, "User berhasil log in", map[string]string{"token": tokenString})
 }
 
+func Logoout(c *gin.Context) {
+	c.SetCookie("Authorization", "", -1, "", "", false, true)
+	sdk.Success(c, http.StatusOK, "Anda telah log out", "")
+}
+
 func Validate(c *gin.Context) {
 	id := c.MustGet("user")
 
@@ -115,7 +120,7 @@ func Validate(c *gin.Context) {
 	//}
 
 	c.JSON(200, gin.H{
-		"data":    user,
+		"data":    user.Nama,
 		"error":   nil,
 		"message": "logged in",
 	})
